@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="text/javascript">
+      var interval1;
+      var i=0;
+      var colors = ["#FFFF00","#FFFF33","#FFFF66","#FFFF99","#FFFFCC","#FFFFFF"];
+
+      function changeColor(){
+        if (i < colors.length) {
+          document.getElementById("fade-text").style.backgroundColor=colors[i];
+          i++;
+        } else {
+          window.clearInterval(interval1);
+          i=0;
+        }
+      }
+      addEventListener("load",function(){
+        document.getElementById("fade-text").addEventListener("click",function(e){
+          interval1 = setInterval(changeColor,100);
+        })
+      });
+    </script>
+  </head>
+
+  <body>
+    <p id="fade-text">Click this text box to see the fade effect</p>
+  </body>
+</html>

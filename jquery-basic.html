@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        jQuery.fn.highlight = function () {
+          $(this).each(function () {
+            var el = $(this);
+            $("<div/>")
+            .width(el.outerWidth())
+            .height(el.outerHeight())
+            .css({
+              "position": "absolute",
+              "left": el.offset().left,
+              "top": el.offset().top,
+              "background-color": "#ffff99",
+              "opacity": ".7",
+              "z-index": "9999999"
+            }).appendTo('body').fadeOut(1000).queue(function () { $(this).remove(); });
+          });
+        }
+        jQuery('.yellow-flash').on('click', function(e) {
+          jQuery('.yellow-flash').highlight();
+        });
+      });
+    </script>
+  </head>
+<body>
+  <div class="yellow-flash">This is some content</div>
+</body></html>

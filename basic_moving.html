@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basic Moving</title>
+    <style type="text/css">
+
+      #snail {
+       position: absolute;
+       left:0px;
+       top:8em;
+      }
+
+    </style>
+    <script type="text/javascript">
+
+      var foo = null; // object
+      function doMove() {
+        foo.style.left = parseInt(foo.style.left)+1+'px';
+
+        // cycle through page
+        if (parseInt(foo.style.left) > window.document.body.clientWidth) {
+          foo.style.left = '-' + foo.clientWidth + 'px';
+        }
+
+        setTimeout(doMove,10); // call doMove in 20msec
+      }
+      function init() {
+        foo = document.getElementById('snail'); // get the "foo" object
+        foo.style.left = '0%'; // set its initial position to 0px
+        doMove(); // start animating
+      }
+      window.onload = init;
+
+    </script>
+  </head>
+
+  <body>
+
+    <h1>Super Snail</h1>
+    <div id="snail">
+      <img src="images/snail.png" alt="snail" />
+    </div>
+
+  </body>
+</html>
